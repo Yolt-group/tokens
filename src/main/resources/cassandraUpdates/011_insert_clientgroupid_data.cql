@@ -1,0 +1,9 @@
+UPDATE clients SET client_group_id=0005291f-68bb-4d5f-9a3f-7aa330fb7641 WHERE id=297ecda4-fd60-4999-8575-b25ad23b249c;
+UPDATE clients SET client_group_id=0005291f-68bb-4d5f-9a3f-7aa330fb7641 WHERE id=a2034b12-7dcc-11e8-adc0-fa7ae01bbebc;
+UPDATE clients SET client_group_id=0005291f-68bb-4d5f-9a3f-7aa330fb7641 WHERE id=5aeafb70-6e5e-4cf5-a13e-3023846fc928;
+UPDATE clients SET client_group_id=0005291f-68bb-4d5f-9a3f-7aa330fb7641 WHERE id=43d71a36-cf05-47c6-a2ca-c426eb5537e3;
+UPDATE clients SET client_group_id=141f08f5-cc7a-483e-beeb-3e28244404b1 WHERE id=a5154eb9-9f47-43b4-81b1-fce67813c002;
+UPDATE clients SET client_group_id=141f08f5-cc7a-483e-beeb-3e28244404b1 WHERE id=9fd1c25c-3bc9-4af7-8d51-424440bcdfb4;
+UPDATE clients SET client_group_id=141f08f5-cc7a-483e-beeb-3e28244404b1 WHERE id=44b561bf-bf83-4ddb-ac54-59e52b75081f;
+UPDATE clients SET client_group_id=141f08f5-cc7a-483e-beeb-3e28244404b1 WHERE id=c18df055-d2ea-460c-9252-f6bc0eddca15;
+UPDATE clients SET client_group_id=141f08f5-cc7a-483e-beeb-3e28244404b1 WHERE id=91a91388-d505-46bf-bf6c-c0ffa920c2d0;

@@ -1,0 +1,20 @@
+@startuml
+
+hide footbox
+
+autonumber "<b>[000]"
+ClientTokenRequestService -> ClientTokenService : if(subject starts with client-user:) createClientUserToken
+
+create control ClientUserToken
+ClientTokenService -> ClientUserToken
+
+ClientTokenRequestService -> ClientTokenService : if(subject starts with group:) createClientGroupToken
+
+create control ClientGroupToken
+ClientTokenService -> ClientGroupToken
+ClientTokenRequestService -> ClientTokenService : if(subject starts with client:) createClientToken
+
+create control ClientToken
+ClientTokenService -> ClientToken
+
+@enduml

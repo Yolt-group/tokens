@@ -1,0 +1,5 @@
+@startuml
+[Tokens] as tokens
+database "Tokens" as tokens_keyspace
+tokens -[#red]-> tokens_keyspace
+@enduml

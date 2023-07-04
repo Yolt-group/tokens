@@ -1,0 +1,1 @@
+ALTER TABLE client_verification_key ADD created timestamp;

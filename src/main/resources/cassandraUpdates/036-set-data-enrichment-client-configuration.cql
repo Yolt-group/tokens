@@ -1,0 +1,3 @@
+UPDATE clients SET data_enrichment_merchant_recognition=true, data_enrichment_categorization=true, data_enrichment_cycle_detection=true, data_enrichment_labels=true WHERE id=5aeafb70-6e5e-4cf5-a13e-3023846fc928;
+UPDATE clients SET data_enrichment_merchant_recognition=true, data_enrichment_categorization=true, data_enrichment_cycle_detection=true, data_enrichment_labels=true WHERE id=a2034b12-7dcc-11e8-adc0-fa7ae01bbebc;
+UPDATE clients SET data_enrichment_merchant_recognition=true, data_enrichment_categorization=true, data_enrichment_cycle_detection=true, data_enrichment_labels=true WHERE id=297ecda4-fd60-4999-8575-b25ad23b249c;

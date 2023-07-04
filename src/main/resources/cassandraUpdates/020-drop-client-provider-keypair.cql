@@ -1,0 +1,1 @@
+DROP TABLE client_provider_keypair;

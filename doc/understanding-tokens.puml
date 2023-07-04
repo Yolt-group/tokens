@@ -1,0 +1,13 @@
+@startuml
+
+abstract class  AbstractClientToken
+
+class           ClientGroupToken
+class           ClientToken
+class           ClientUserToken
+
+AbstractClientToken <|-- ClientToken
+AbstractClientToken <|-- ClientGroupToken
+ClientToken <|-- ClientUserToken
+
+@enduml

@@ -1,0 +1,1 @@
+ALTER TABLE clients ADD contact_addresses frozen<set<text>>;

@@ -1,0 +1,1 @@
+INSERT INTO clientgroups (id, name) VALUES (f767b2f9-5c90-4a4e-b728-9c9c8dadce4f, 'YTS');

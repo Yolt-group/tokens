@@ -1,0 +1,1 @@
+ALTER TABLE client_group_keypair ADD subject_alternative_names set<text>;

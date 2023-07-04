@@ -1,0 +1,62 @@
+spring:
+  datasource:
+    username: runner
+    password: runner
+    url: jdbc:postgresql://127.0.0.1:5432/integration-test-db
+  data:
+    cassandra:
+      keyspace-name: tokens
+      contact-points: 127.0.0.1
+      datacenter-name: datacenter1
+      username: cassandra
+      password: cassandra
+  main:
+    allow-bean-definition-overriding: true
+  kafka:
+    consumer:
+      group-id: ${yolt.kafka.consumer-group}
+      enableAutoCommit: true
+      # ensure tests always read from the earliest message in the topic
+      autoOffsetReset: earliest
+service:
+  tokens:
+    encryption-shared-secret: Fdh9u8rINxfivbrianbbVT1u232VQBZYKx1HGAGPt2IFdh9u8rINxfivbrianbbVT1u232VQBZYKx1HGAGPt2I
+    signature-jwks: "{\"keys\":[{\"use\":\"sig\",\"kty\":\"RSA\",\"kid\":\"470651BE-8B62-46DA-97CC-C3D9F1FB614D\",\"alg\":\"RS512\",\"n\":\"ygbJ7SbHx3_fiMSx7hxDwKsMh0qumWmk6l85quMBpPXlimiJ2tO4KZtJG_sKdXXZwoorDB4fGINS1yQYjPqtZGsUW29Sbkcuqw3_3Tm33-hhBLZY_pdXCwfAqAXGO4cK2eoRQ8_hQiQLAx4w2zTfW-bpbaH54C3VGyPlrYGzIqZkDLRESJipJ1s0IRKzPtXmNDYXAlIBdCDCSsjz702YsJJf9xzGVgYU22ByaoTT3Nyi3ygxvyqKjDJOZY4nmH5cWJ71VW8OL_zzfqFvUXPposAV_3oNRVsDn_wvYkXdaqSa6odOFUWAiZPi9MH_nb13Xia5vEAoekUb96TjVckrgw\",\"e\":\"AQAB\",\"p\":\"8UyOm90SZAjlx9YcNMnv-i6fkGatq9i6ReYNBO1I_W8wxNlKhJJHaMILHXjf5R2tOPVljRc8doMowtlAJogS7zXIfX3Wfhsla_oz2vqAqoxp2HDuCJ5u_s0Ripa_QCshEaYSSgH36u4EHaJ592znuqug3YqP3ch2NBc314NUQVM\",\"q\":\"1lW2yrkPNz7gszL7fQovCvCeswmM4pI3yW3W5Z8VIDi30AIAC9eOy3OHxPBaI-P68L-ePeQvSgashnp2-kkX-MeqeAdfXgwn1L8cbEovwlCoAXnJXWTEpyjCafzaDb1pacQimFVHByJ_zQ7eYJstgq3aSa7Jhh2zyTF7pMM4NxE\",\"dp\":\"f1G53ZvkXEwlki_zahczPHrlTrge4xHUF5WvQO5DGRZWUUel_hWBAFGCs-ZXnPjvsaIqFywvhwjltQoUw0ABXZ6vTyfayWdhc3vtaJnM0jCMmNvdfUa7ok5p9wpbl2wqYrmR5OLtAVTdbxWP7XHVQ7XTh5HZH1jqpcmqeVieWGk\",\"dq\":\"xIioKk9y8leHtwnirQ9vf3qQKt9w_jjRSrSbPsaWmosnkWakIDeySkBPmHhET3C3I5axRVM9QYXJIS6ednYbsxVy7Mjl29kNlPkA2RNVo7pNs7y2thq2cAjh7EncsIikZkVg64oWrSYnRiKCKtdf7dn4tWO-imol9zCWjcgsfeE\",\"qi\":\"LiAq3yUwdon_UqMfKtEKVfE1S1M_4k2n6S7KaD2yxi5IuZ4v74kRKi0w6oNST3P3D23zstnIp4icDPFaoDYzVSXTes7_e7Zu0tU4BtlqYqwcJzAa2-beyQyfdZE9FIXIMGItT9KCKuVi-e2OiPEYZWJV8ZBas_bW1BTKdHxUaaw\"}]}"
+tokens:
+  client-token-requester:
+    services-jwks:
+      dev-portal: '{"keys":[{"use":"sig","kty":"RSA","kid":"d91706d8-dbc5-4e5c-a98c-018f1dbbe3b3","alg":"PS512","n":"3gIoBnouy6u2hhuwHmZ1xNqWYj21V8cjSEcojriZTmQjFlDPRKYi90ohXQImarPtSwZZ43VyGWfPzDBYsjv1kpoxi_fIO2TUo7Hya9ZBlKfUPS02cuUg8_vvuPJOKjtyYcxT-EiAhuVCHQO5xPW0txNfEmcZabM--U2f0xDkYkvSH0UdLITOuGxJ2Z3c9dnUktYKtuFgLJ6IUSbKEVu3c4gVlKKIZqUwaqTeDN_Ta2qo42eAGB-NDkV2Fb-lWv0pAP4JrmzzR4T4CQjxC64JnMj5WS-HLVB3ZYGeyd_TdMOl54E1bqceLUXd3lLS-H3uA20qFwJIiSN2mKJfsu1zyQ","e":"AQAB"}]}'
+yolt:
+  vault:
+    enabled: false
+    address: http://localhost:${wiremock.server.port}/
+  deployment:
+    namespace: default
+    environment: "test"
+  client-token:
+    verification:
+      dryrun: false
+  kafka:
+    # Unique for the microservice.
+    consumer-group: tokens
+    topics:
+      ycs-client-events:
+        topic-name: ycs_client_events
+        listener-concurrency: 1
+      ycs-client-group-events:
+        topic-name: ycs_client_group_events
+        listener-concurrency: 1
+      ycs-request-token-public-key:
+        topic-name: ycs_requestTokenPublicKey
+        listener-concurrency: 1
+      ycs-client-deleted-events:
+        topic-name: clientDeletedEvents
+        listener-concurrency: 1
+    producing:
+      enabled: false
+management:
+  server:
+    port: 8888
+    ssl:
+      enabled: false
+environment: test

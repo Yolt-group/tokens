@@ -1,0 +1,1 @@
+alter table client_group_keypair drop distinguished_names;

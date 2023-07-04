@@ -1,0 +1,38 @@
+server:
+  port: 8095
+spring:
+  data:
+    cassandra:
+      keyspace-name: ycs_tokens
+      contact-points: cassa.team5.yolt.io
+      username: cassandra
+      password: cassandra
+      datacenter-name: eu-central-1
+      ssl: true
+      port: 9142
+service:
+  providers:
+    url: https://ingress.ycs.team5.yolt.io/providers
+  crypto:
+    url: https://ingress.ycs.team5.yolt.io/crypto
+  yoltbank:
+    url: https://ingress.ycs.team5.yolt.io/yoltbank
+  tokens:
+    encryption-shared-secret: Fdh9u8rINxfivbrianbbVT1u232VQBZYKx1HGAGPt2IFdh9u8rINxfivbrianbbVT1u232VQBZYKx1HGAGPt2I
+    # taken from k8s-manifest-core to allow running locally against team/integration environments
+    signature-jwks: '{"keys":[{"kty":"RSA","e":"AQAB","use":"sig","kid":"2808f03d-1050-45f2-8c01-9c2441e050a8","alg":"RS512","n":"lRaJ738bbiMUpmTFLVXioZd7u9T9qm6LSH5FdW1AUrJJG-E4fo6n_30_ftUKc4ZZqotlJ-SvujHvqfNTbVkVy4m4j-yVgTQNP-OIsgTREVckcOk0v8bTaQALB3uCLA7xdDrr24K35tS5E6kDQQ8m9RvHiQk4owNLT81PevHkoH1lfgUwOZHfXLzJBqj_PXPoSIT1y9SfkCn7M00ea28n2xWbGXV_vj8bhJhKSXB2jnlHXO2QEXH6v8VoENl9CaWyjkJ0uJPPCyjRYO4-P2F92Xw88RC0rGGH-AA_sI9l8zOHu2MKFAL9txi2irUBq9bIayTWv0sjBbtHm_hopywVaw"}]}'
+yolt:
+  deployment:
+    namespace: ycs
+    environment: team5
+  vault:
+    enabled: true
+    auth:
+#      service-account-token-file: /path-to-vault-token-file
+      service-account-token-file: C:\\workspace\\tokens\\vaultToken
+    address: https://vault.vault-dta.yolt.io
+    tokens:
+      auth:
+        path: team5/k8s/cluster%d/pods/%s
+      secrets:
+        path: team5/k8s/pods/%s/kv/tokens

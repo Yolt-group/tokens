@@ -1,0 +1,3 @@
+UPDATE clients SET client_users_kyc_private_individuals=true, client_users_kyc_entities=true, psd2_licensed=false WHERE id=8d059a9b-d26f-493c-bc0b-61c790fe9fb9;
+UPDATE clients SET client_users_kyc_private_individuals=true, client_users_kyc_entities=true, psd2_licensed=false WHERE id=7ac76b5f-ea3c-421e-8de9-8f93a14c5055;
+UPDATE clients SET client_users_kyc_entities=true WHERE id=3e3aae2f-e632-4b78-bdf8-2bf5e5ded17e;
